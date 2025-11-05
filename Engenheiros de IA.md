@@ -94,7 +94,7 @@ def chunk_text(text: str, chunk_size=800, overlap=120) -> List[str]:
         if i > 0:
             prev_tail = chunks[i-1][-overlap:]
             chunk = prev_tail + " " + chunk
-        overlapped.append(chunk)
+        overlapped.append(chunk) 
     
     return overlapped
 ```
@@ -112,6 +112,7 @@ def chunk_text(text: str, chunk_size=800, overlap=120) -> List[str]:
 - Chunks muito grandes: diluem relevância
 - 800 chars é sweet spot para BAAI/bge-m3
 
+
 ---
 
 ## 🔢 Embedding Model: BAAI/bge-m3
@@ -127,7 +128,7 @@ model = SentenceTransformer(EMBED_MODEL_NAME)
 **Especificações:**
 - **Dimensões**: 1024
 - **Max Length**: 8192 tokens
-- **Multilingual**: Suporta 100+ idiomas (incluindo PT-BR)
+- **Multilingual**: Suporta 100+ idiomas (incluindo PT-BR)     
 - **Training**: Contrastive learning + in-batch negatives
 - **Performance**: SOTA em várias tarefas de retrieval
 
@@ -135,7 +136,7 @@ model = SentenceTransformer(EMBED_MODEL_NAME)
 
 | Critério | BGE-M3 | Alternativas |
 |----------|--------|--------------|
-| Português | ⭐⭐⭐⭐⭐ | all-MiniLM (⭐⭐⭐) |
+| Português | ⭐⭐⭐⭐⭐ | all-MiniLM (⭐⭐⭐) | 
 | Velocidade | ⭐⭐⭐⭐ | OpenAI Ada-002 (⭐⭐) |
 | Custo | Grátis | OpenAI (pago) |
 | Offline | ✅ | OpenAI (❌) |
@@ -175,7 +176,7 @@ dimension = 1024
 index = faiss.IndexFlatIP(dimension)  # Inner Product (= Cosine após normalização)
 
 # Adicionar vetores
-index.add(embeddings_np)  # numpy array [N, 1024]
+index.add(embeddings_np)  # numpy array [N, 1024] 
 ```
 
 ### Por que IndexFlatIP?
